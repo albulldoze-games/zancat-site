@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ZANCATは、タイミングに合わせて猫を飛ばし、小判と着せ替えを集めるワンタップ・ジャンプアクションです。">
+<meta property="og:title" content="ZANCAT 斬猫">
+<meta property="og:description" content="タップで、タイミングだけの爽快ジャンプ。遊ぶほど猫の姿が増えていく。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/hero-a.jpg">
+<meta name="theme-color" content="#050510">
+<title>ZANCAT 斬猫 — タップで登る猫ジャンプアクション</title>
+<style>
+  :root { color-scheme:dark; --bg:#050510; --panel:#091a25; --cyan:#20f7ff;
+          --pink:#ff35da; --text:#f5ffff; --muted:#9fc4ca; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--text);
+         font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+         line-height:1.75; overflow-x:hidden; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.38;
+    background:radial-gradient(circle at 18% 12%,rgba(0,255,255,.18),transparent 32%),
+               radial-gradient(circle at 90% 32%,rgba(255,0,255,.14),transparent 28%),
+               linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+               linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+    background-size:auto,auto,32px 32px,32px 32px; }
+  a { color:inherit; }
+  .wrap { width:min(1120px,calc(100% - 32px)); margin:auto; position:relative; }
+  nav { height:72px; display:flex; align-items:center; justify-content:space-between; }
+  .brand { font-weight:950; letter-spacing:.12em; font-size:21px; text-decoration:none;
+           text-shadow:0 0 18px rgba(32,247,255,.5); }
+  nav .links { display:flex; gap:20px; font-size:13px; color:var(--muted); }
+  nav .links a { text-decoration:none; }
+  .hero { min-height:calc(100svh - 72px); display:grid; grid-template-columns:.9fr 1.1fr;
+          gap:56px; align-items:center; padding:40px 0 88px; }
+  .eyebrow { color:var(--cyan); font-weight:850; letter-spacing:.18em; font-size:13px; }
+  h1 { margin:8px 0 18px; font-size:clamp(56px,9vw,126px); line-height:.86;
+       letter-spacing:-.05em; text-shadow:0 0 28px rgba(32,247,255,.26); }
+  .jp { display:block; color:var(--pink); font-size:.34em; letter-spacing:.18em;
+        margin-top:24px; text-shadow:0 0 22px rgba(255,53,218,.6); }
+  .lead { margin:0; font-size:clamp(22px,3vw,38px); font-weight:900; line-height:1.45; }
+  .lead em { font-style:normal; color:var(--cyan); }
+  .sub { color:var(--muted); max-width:520px; margin:22px 0 30px; }
+  .badge { display:inline-flex; border:1px solid var(--cyan); padding:12px 18px; font-weight:800;
+           color:var(--cyan); box-shadow:0 0 18px rgba(32,247,255,.2); }
+  .phones { display:grid; grid-template-columns:1fr 1fr; gap:14px; transform:rotate(2deg); }
+  .phones img { display:block; width:100%; border-radius:28px; box-shadow:0 20px 70px #000,
+                0 0 34px rgba(32,247,255,.18); }
+  .phones img:nth-child(2) { transform:translateY(38px); }
+  section { padding:100px 0; }
+  h2 { margin:0 0 12px; font-size:clamp(34px,5vw,64px); line-height:1.1; }
+  .section-lead { color:var(--muted); margin:0 0 42px; font-size:18px; }
+  .features { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .feature { background:linear-gradient(145deg,rgba(10,33,45,.9),rgba(5,5,16,.96));
+             border:1px solid rgba(32,247,255,.28); padding:30px; min-height:230px; }
+  .num { color:var(--pink); font-weight:950; font-size:14px; letter-spacing:.14em; }
+  .feature h3 { font-size:25px; margin:25px 0 10px; }
+  .feature p { color:var(--muted); margin:0; }
+  .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start; }
+  .gallery img { width:100%; display:block; border:1px solid rgba(255,255,255,.12);
+                 box-shadow:0 18px 60px rgba(0,0,0,.55); }
+  .gallery img:nth-child(2) { margin-top:46px; }
+  .gallery img:nth-child(3) { margin-top:92px; }
+  .cta { text-align:center; padding:110px 20px; border-block:1px solid rgba(32,247,255,.24);
+         background:radial-gradient(circle,rgba(255,53,218,.12),transparent 58%); }
+  .cta p { color:var(--muted); }
+  footer { padding:40px 0 56px; display:flex; justify-content:space-between; color:var(--muted);
+           font-size:13px; }
+  footer div { display:flex; gap:18px; }
+  @media (max-width:760px) {
+    nav .links a:first-child { display:none; }
+    .hero { grid-template-columns:1fr; gap:42px; padding-top:30px; }
+    .hero-copy { text-align:center; }
+    .sub { margin-inline:auto; }
+    .features { grid-template-columns:1fr; }
+    .gallery { gap:8px; }
+    .gallery img:nth-child(2) { margin-top:22px; }
+    .gallery img:nth-child(3) { margin-top:44px; }
+    section { padding:72px 0; }
+    footer { flex-direction:column; gap:16px; }
+  }
+</style>
+</head>
+<body>
+<header class="wrap"><nav><a class="brand" href="#top">ZANCAT</a><div class="links"><a href="#play">遊び方</a><a href="#collection">コレクション</a><a href="support.html">サポート</a></div></nav></header>
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <div class="eyebrow">ONE-TAP NEON ACTION</div>
+      <h1>ZANCAT<span class="jp">斬猫</span></h1>
+      <p class="lead">タップでジャンプ。<br><em>タイミングだけ</em>の爽快アクション。</p>
+      <p class="sub">小判を集め、プレイを重ねて、いろんな猫の姿をコレクション。隙間時間で、どこまでも上へ。</p>
+      <span class="badge">iPhone版・近日公開</span>
+    </div>
+    <div class="phones" aria-label="ZANCATのゲーム画面">
+      <img src="assets/hero-a.jpg" alt="ネオンの猫が大きく飛び出すZANCATの画面">
+      <img src="assets/hero-b.jpg" alt="猫がさらに上へ飛んでいくZANCATの画面">
+    </div>
+  </div>
+  <section id="play"><div class="wrap">
+    <h2>迷わない。<br>タップひとつ。</h2>
+    <p class="section-lead">狙うのは、次の足場へ飛び移る一瞬。</p>
+    <div class="features">
+      <article class="feature"><span class="num">01 / JUMP</span><h3>離してジャンプ</h3><p>猫は足場のふちを進み続ける。向きが合った瞬間にタップを離そう。</p></article>
+      <article class="feature"><span class="num">02 / CHAIN</span><h3>つなげて爽快</h3><p>チェインが伸びるほどスコアも、音も、ネオンの演出も派手になる。</p></article>
+      <article class="feature"><span class="num">03 / CLIMB</span><h3>どこまでも上へ</h3><p>短いプレイでもすぐ再挑戦。自分のベストを、片手で更新していこう。</p></article>
+    </div>
+  </div></section>
+  <section id="collection"><div class="wrap">
+    <h2>遊ぶほど、<br>猫の姿が増えていく。</h2>
+    <p class="section-lead">スコアを重ねて新しい姿を解放。お気に入りの猫で次のランへ。</p>
+    <div class="gallery">
+      <img src="assets/collection.jpg" alt="遊ぶほど猫の姿が増えるコレクション要素">
+      <img src="assets/styles.jpg" alt="さまざまな衣装を着た猫たち">
+      <img src="assets/chain.jpg" alt="高いチェインで派手になるゲーム画面">
+    </div>
+  </div></section>
+  <section class="cta"><h2>隙間時間で、ジャンプアップ。</h2><p>iPhone版を準備中です。</p></section>
+</main>
+<footer class="wrap"><span>© 2026 keigo shimokawa</span><div><a href="support.html">サポート</a><a href="privacy.html">プライバシー</a></div></footer>
+</body>
+</html>
